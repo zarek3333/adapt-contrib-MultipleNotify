@@ -1,5 +1,34 @@
 <div class="component__inner graphic__inner" id="inner-{{_id}}" role="region" aria-label="{{_globals._components._graphic.ariaRegion}}">
-    {{> component this}}
+    
+    <div class="MultipleNotify-header component-header">
+      <div class="MultipleNotify-header-inner component-header-inner">
+
+        {{#if displayTitle}}
+        <div class="MultipleNotify-title component-title">
+            <div role="heading" tabindex="0" class="MultipleNotify-title-inner component-title-inner">
+              {{displayTitle}}
+            </div>
+        </div>
+        {{/if}}
+
+        {{#if body}}
+        <div class="MultipleNotify-body">
+          <div tabindex="0" class="MultipleNotify-body-inner">
+            {{{body}}}
+          </div>
+        </div>
+        {{/if}}
+
+        {{#if instruction}}
+        <div class="MultipleNotify-instruction component-instruction">
+            <div tabindex="0" class="MultipleNotify-instruction-inner component-instruction-inner">
+                {{instruction}}
+            </div>
+        </div>
+        {{/if}}
+
+      </div>
+    </div>
 
     <button class="btn-text notifymybut {{#if _buttonData.button.classadd}} notifyonbut {{/if}}" id="mybutton" style="display:none;">{{_buttonData.button.copypaste}}</button>
 
