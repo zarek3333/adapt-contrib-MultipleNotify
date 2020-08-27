@@ -1,27 +1,38 @@
 <div class="component__inner graphic__inner" id="inner-{{_id}}" role="region" aria-label="{{_globals._components._graphic.ariaRegion}}">
     
-    <div class="MultipleNotify-header component-header">
-      <div class="MultipleNotify-header-inner component-header-inner">
+    <div class="MultipleNotify__header component__header">
+      <div class="MultipleNotify__header-inner component__header-inner">
 
         {{#if displayTitle}}
-        <div class="MultipleNotify-title component-title">
-            <div role="heading" tabindex="0" class="MultipleNotify-title-inner component-title-inner">
+        <div class="MultipleNotify__title component__title">
+            {{#if _pageLevelProgress._isCompletionIndicatorEnabled}}
+              <div class="js-heading">
+                <div class="js-heading-inner" role="heading" aria-level="4">
+                {{#if ariaLabel}}
+                <span class="aria-label">
+                  {{compile ariaLabel}}
+                </span>
+               {{/if}}
+                </div>
+              </div>
+            {{/if}}
+            <div role="heading" tabindex="0" class="MultipleNotify__title-inner component__title-inner">
               {{displayTitle}}
             </div>
         </div>
         {{/if}}
 
         {{#if body}}
-        <div class="MultipleNotify-body">
-          <div tabindex="0" class="MultipleNotify-body-inner">
+        <div class="MultipleNotify__body component__body">
+          <div tabindex="0" class="MultipleNotify__body-inner component__body-inner">
             {{{body}}}
           </div>
         </div>
         {{/if}}
 
         {{#if instruction}}
-        <div class="MultipleNotify-instruction component-instruction">
-            <div tabindex="0" class="MultipleNotify-instruction-inner component-instruction-inner">
+        <div class="MultipleNotify__instruction component__instruction">
+            <div tabindex="0" class="MultipleNotify__instruction-inner component__instruction-inner">
                 {{instruction}}
             </div>
         </div>
