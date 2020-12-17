@@ -126,7 +126,7 @@ define([
                 _classes: ' txtbutnotify'
             };
 
-            Adapt.trigger('notify:alert', buttonObject);
+            Adapt.notify.alert(buttonObject);
             this.setCompletionStatus();
             $('.accessibility .' + getcurrentid + ' .multiplenotify__body-inner').removeAttr('tabindex');
             $('.accessibility .' + getcurrentid + ' button').attr('tabindex','0');
