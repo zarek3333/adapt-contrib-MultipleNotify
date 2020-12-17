@@ -83,7 +83,7 @@
           $('#inner-{{../_id}} #myalert[data-index="' + $multinotifycounter + '"]').click(function() {
               $(this).addClass("popcount");
               var $multinotifymsg = '{{{message}}}';
-              require('coreJS/adapt').trigger('notify:alert',{title:'{{title}}',body:$multinotifymsg,confirmText:'{{confirmButton}}' });return false;
+              require('coreJS/adapt').notify.alert({title:'{{title}}',body:$multinotifymsg,confirmText:'{{confirmButton}}' });return false;
           });
         </script>
       {{/each}}
@@ -99,7 +99,7 @@
           $('#inner-{{../_id}} #mypopup[data-index="' + $multinotifycounter + '"]').click(function() {
               $(this).addClass("popcount");
               var $multinotifymsg = '{{{message}}}';
-              require('coreJS/adapt').trigger('notify:popup',{title:'{{title}}',body:$multinotifymsg });return false;
+              require('coreJS/adapt').notify.popup({title:'{{title}}',body:$multinotifymsg });return false;
           });
         </script>
       {{/each}}
