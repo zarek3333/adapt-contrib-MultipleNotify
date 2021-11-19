@@ -2,20 +2,42 @@
   "_id": "c-05",
   "_parentId": "b-05",
   "_type": "component",
-  "_component": "textNotify",
+  "_component": "MultipleNotify",
   "_classes": "",
   "_layout": "left",
   "title": "Introduction",
-  "displayTitle": "Text Notify",
-  "body": "Adapt allows you to combine text and graphic components on the <a id='test' href='#'>scrolling page</a> to create rich and varied learning experiences. In addition, a wide range of interactive components are also available to help encourage deeper engagement with the material.<br><br>These presentation components can be structured in any way to help you create learning experiences that meet the needs of your learners.",
-  "instruction": "Scroll down to see what presentation components are available as part of the Version 2.0 core bundle.",
+  "displayTitle": "Text Multiple Notify",
+  "body": "Insert a Notify popup, alert, button or external link to the body of a text component and even a graphic. To trigger the notifier add the example link into the body of the component: <a data-index='1' href='#mypopup' id='mypopup'>Click to Trigger Notify</a> . When adding more than one notifier in the component increase the data-index number within the a tag link ex.(data-index='2')",
   "_pageLevelProgress": {
     "_isEnabled": true
   },
-  "_popupData": {
-    "test": {
-        "title": "Test!",
-        "message": "This text will show when an a tag with the id 'test' is clicked."
-    }
-  }
+  "properties" : {
+        "instruction" : "",
+        "_graphic" : {
+            "alt" : "",
+            "large" : "",
+            "small" : "",
+            "attribution" : ""
+        },
+        "_notifyopt" : "popup",
+        "_popupData" : [ 
+            {
+                "title" : "Notify Popup Title",
+                "message" : "<p>Notify Popup Body copy with link. <a data-index='1' href='#mypopup' id='mypopup'>Click to Trigger Notify</a></p>",
+                "copypaste" : "<a data-index='1' href='#' id='mypopup'>copied popup link</a>"
+            }
+        ],
+        "_alertData" : [],
+        "_externaLink" : [],
+        "_buttonData" : {
+            "button" : {
+                "classadd" : false,
+                "copypaste" : "Click Here",
+                "title" : "Title goes here",
+                "message" : "<p>Message goes here</p>",
+                "confirmButton" : "Continue"
+            }
+        },
+        "bottomText" : ""
+    },
 }
