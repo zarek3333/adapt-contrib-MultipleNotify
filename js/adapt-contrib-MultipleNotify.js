@@ -24,24 +24,24 @@ define([
         events: function() {
             return Adapt.device.touch == true ? {
                 'inview': 'inview',
-                'touchmove .multiplenotify__body-inner [data-index]' : 'completePopup',
+                'touchmove .MultipleNotify__body-inner [data-index]' : 'completePopup',
                 'touchmove .textnotify-bottom-text [data-index]' : 'completePopup',
-                'click .multiplenotify__body-inner #mypopup' : 'mynotifyPopup',
-                'click .multiplenotify__body-inner #myalert' : 'mynotifyAlert',
-                'click .multiplenotify__body-inner #myexternalink' : 'myexternaLink',
+                'click .MultipleNotify__body-inner #mypopup' : 'mynotifyPopup',
+                'click .MultipleNotify__body-inner #myalert' : 'mynotifyAlert',
+                'click .MultipleNotify__body-inner #myexternalink' : 'myexternaLink',
                 'click .component__inner #mybutton' : 'mynotifyButton',
                 'click .textnotify-bottom-text #mypopup' : 'mynotifyPopup',
                 'click .textnotify-bottom-text #myalert' : 'mynotifyAlert',
                 'click .textnotify-bottom-text #myexternalink' : 'myexternaLink'
             } : {
                 'inview': 'inview',
-                'mouseout .multiplenotify__body-inner [data-index]' : 'completePopup',
+                'mouseout .MultipleNotify__body-inner [data-index]' : 'completePopup',
                 'mouseout .textnotify-bottom-text [data-index]' : 'completePopup',
-                'keydown .multiplenotify__body-inner [data-index]' : 'completePopup',
+                'keydown .MultipleNotify__body-inner [data-index]' : 'completePopup',
                 'keydown .textnotify-bottom-text [data-index]' : 'completePopup',
-                'click .multiplenotify__body-inner #mypopup' : 'mynotifyPopup',
-                'click .multiplenotify__body-inner #myalert' : 'mynotifyAlert',
-                'click .multiplenotify__body-inner #myexternalink' : 'myexternaLink',
+                'click .MultipleNotify__body-inner #mypopup' : 'mynotifyPopup',
+                'click .MultipleNotify__body-inner #myalert' : 'mynotifyAlert',
+                'click .MultipleNotify__body-inner #myexternalink' : 'myexternaLink',
                 'click .component__inner #mybutton' : 'mynotifyButton',
                 'click .textnotify-bottom-text #mypopup' : 'mynotifyPopup',
                 'click .textnotify-bottom-text #myalert' : 'mynotifyAlert',
@@ -196,7 +196,6 @@ define([
 
     });
 
-    //Adapt.register('MultipleNotify', TextMultipleNotify);
     Adapt.register('MultipleNotify', {
       model: ComponentModel.extend({}), // register the model, it should be an extension of ComponentModel, an empty extension is fine
       view: TextMultipleNotify
