@@ -78,14 +78,6 @@
         <div class="{{../_id}}-fbnotify a11y-ignore" aria-hidden="true" tabindex="-1" style="display:none;">[ Text Notify {{@index}} Alert Title ] = {{title}}
           <div class="{{../_id}}-fbnotify a11y-ignore" aria-hidden="true" tabindex="-1" style="display:none;">[ Text Notify {{@index}} Alert Body ] = {{{message}}}</div>
         </div>
-        <script class="{{../_id}}-fbnotify">
-          var $multinotifycounter = {{@index}}+1;
-          $('#inner-{{../_id}} #myalert[data-index="' + $multinotifycounter + '"]').click(function() {
-              $(this).addClass("popcount");
-              var $multinotifymsg = '{{{message}}}';
-              require('coreJS/adapt').notify.alert({title:'{{title}}',body:$multinotifymsg,confirmText:'{{confirmButton}}' });return false;
-          });
-        </script>
       {{/each}}
     {{/if}}
     {{#if _popupData}}
@@ -94,25 +86,10 @@
         <div class="{{../_id}}-fbnotify a11y-ignore" aria-hidden="true" tabindex="-1" style="display:none;">[ Text Notify {{@index}} Popup Title ] = {{title}}
           <div class="{{../_id}}-fbnotify a11y-ignore" aria-hidden="true" tabindex="-1" style="display:none;">[ Text Notify {{@index}} Popup Body ] = {{{message}}}</div>
         </div>
-        <script class="{{../_id}}-fbnotify">
-          var $multinotifycounter = {{@index}}+1;
-          $('#inner-{{../_id}} #mypopup[data-index="' + $multinotifycounter + '"]').click(function() {
-              $(this).addClass("popcount");
-              var $multinotifymsg = '{{{message}}}';
-              require('coreJS/adapt').notify.popup({title:'{{title}}',body:$multinotifymsg });return false;
-          });
-        </script>
       {{/each}}
     {{/if}}
     {{#if _externaLink}}
-      {{#each _externaLink}}
-        <script class="{{../_id}}-fbnotify">
-          var $multinotifycounter = {{@index}}+1;
-          $('#inner-{{../_id}} #myexternalink[data-index="' + $multinotifycounter + '"]').click(function() {
-              $(this).addClass("popcount");
-          });
-        </script>
-      {{/each}}
+      {{#each _externaLink}}{{/each}}
     {{/if}}
 </div>
 <script class="{{_id}}-fbnotify">if ( !$('html').hasClass('pagesave2txt') ) { $( ".{{_id}}-fbnotify" ).remove(); }</script>
