@@ -26,14 +26,26 @@ define([
                 'inview': 'inview',
                 'touchmove .multiplenotify__body-inner [data-index]' : 'completePopup',
                 'touchmove .textnotify-bottom-text [data-index]' : 'completePopup',
-                'click .component__inner #mybutton' : 'mynotifyButton'
+                'click .multiplenotify__body-inner #mypopup' : 'mynotifyPopup',
+                'click .multiplenotify__body-inner #myalert' : 'mynotifyAlert',
+                'click .multiplenotify__body-inner #myexternalink' : 'myexternaLink',
+                'click .component__inner #mybutton' : 'mynotifyButton',
+                'click .textnotify-bottom-text #mypopup' : 'mynotifyPopup',
+                'click .textnotify-bottom-text #myalert' : 'mynotifyAlert',
+                'click .textnotify-bottom-text #myexternalink' : 'myexternaLink'
             } : {
                 'inview': 'inview',
                 'mouseout .multiplenotify__body-inner [data-index]' : 'completePopup',
                 'mouseout .textnotify-bottom-text [data-index]' : 'completePopup',
                 'keydown .multiplenotify__body-inner [data-index]' : 'completePopup',
                 'keydown .textnotify-bottom-text [data-index]' : 'completePopup',
-                'click .component__inner #mybutton' : 'mynotifyButton'
+                'click .multiplenotify__body-inner #mypopup' : 'mynotifyPopup',
+                'click .multiplenotify__body-inner #myalert' : 'mynotifyAlert',
+                'click .multiplenotify__body-inner #myexternalink' : 'myexternaLink',
+                'click .component__inner #mybutton' : 'mynotifyButton',
+                'click .textnotify-bottom-text #mypopup' : 'mynotifyPopup',
+                'click .textnotify-bottom-text #myalert' : 'mynotifyAlert',
+                'click .textnotify-bottom-text #myexternalink' : 'myexternaLink'
             }
         },
 
@@ -102,11 +114,61 @@ define([
             } else if (howmanymypopup === howmanyclicked ) {
                 this.setCompletionStatus();
             } 
+        },
+        
+        mynotifyPopup: function (event) {
+            event.preventDefault();
 
-            $('.accessibility .' + getcurrentid + ' .multiplenotify__body-inner').removeAttr('tabindex');
-            $('.accessibility .' + getcurrentid + ' .multiplenotify__body-inner p').attr('tabindex','0');
-            $('.accessibility .' + getcurrentid + ' .textnotify-bottom-text').removeAttr('tabindex');
-            $('.accessibility .' + getcurrentid + ' .textnotify-bottom-text p').attr('tabindex','0');
+            this.model.set('_active', false);
+
+            var index = $(event.currentTarget).data('index');
+            var multinotifycounter = parseInt(index-1);
+            var getcurrentid = this.model.get('_id');
+            var bodyText = this.model.get("_popupData")[multinotifycounter].message;
+            var titleText = this.model.get("_popupData")[multinotifycounter].title;
+
+            var popupObject2 = {
+                title: titleText,
+                body: bodyText
+            };
+
+            $('#inner-' + getcurrentid + ' #mypopup[data-index="' + index + '"]').addClass("popcount");
+
+            Adapt.trigger('notify:popup', popupObject2);
+        },
+
+        mynotifyAlert: function (event) {
+            event.preventDefault();
+
+            this.model.set('_active', false);
+
+            var index = $(event.currentTarget).data('index');
+            var multinotifycounter = parseInt(index-1);
+            var getcurrentid = this.model.get('_id');
+            var bodyText2 = this.model.get("_alertData")[multinotifycounter].message;
+            var titleText2 = this.model.get("_alertData")[multinotifycounter].title;
+            var confirmText2 = this.model.get("_alertData")[multinotifycounter].confirmButton;
+
+            var alertObject2 = {
+                title: titleText2,
+                body: bodyText2,
+                confirmText: confirmText2
+            };
+
+            $('#inner-' + getcurrentid + ' #myalert[data-index="' + index + '"]').addClass("popcount");
+
+            Adapt.trigger('notify:alert', alertObject2);
+        },
+
+        myexternaLink: function (event) {
+            event.preventDefault();
+
+            this.model.set('_active', false);
+
+            var index = $(event.currentTarget).data('index');
+            var getcurrentid = this.model.get('_id');
+
+            $('#inner-' + getcurrentid + ' #myexternalink[data-index="' + index + '"]').addClass("popcount");
         },
 
         mynotifyButton: function (event) {
@@ -128,8 +190,6 @@ define([
 
             Adapt.notify.alert(buttonObject);
             this.setCompletionStatus();
-            $('.accessibility .' + getcurrentid + ' .multiplenotify__body-inner').removeAttr('tabindex');
-            $('.accessibility .' + getcurrentid + ' button').attr('tabindex','0');
         }
 
     });
