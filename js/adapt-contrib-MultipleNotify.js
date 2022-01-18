@@ -129,12 +129,13 @@ define([
 
             var popupObject2 = {
                 title: titleText,
-                body: bodyText
+                body: bodyText,
+                _classes: ' multi4popup'
             };
 
             $('#inner-' + getcurrentid + ' #mypopup[data-index="' + index + '"]').addClass("popcount");
 
-            Adapt.trigger('notify:popup', popupObject2);
+            Adapt.notify.popup(popupObject2);
         },
 
         mynotifyAlert: function (event) {
@@ -152,12 +153,13 @@ define([
             var alertObject2 = {
                 title: titleText2,
                 body: bodyText2,
-                confirmText: confirmText2
+                confirmText: confirmText2,
+                _classes: ' multi4alert'
             };
 
             $('#inner-' + getcurrentid + ' #myalert[data-index="' + index + '"]').addClass("popcount");
 
-            Adapt.trigger('notify:alert', alertObject2);
+            Adapt.notify.alert(alertObject2);
         },
 
         myexternaLink: function (event) {
